@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       for (const prom of res) {
         arr.push({
           status: prom.status,
-          value: prom.status === 'fulfilled' ? prom.value : prom.reason,
+          value: prom.status === 'fulfilled' ? prom.value : String(prom.reason),
         });
       }
       return arr;
