@@ -46,8 +46,6 @@ for (const student of studentsList) {
     NameColumn.appendChild(NameText);
     row.appendChild(NameColumn);
     row.appendChild(locationColumn);
-
-    
     tableVar.appendChild(row);
 }
 
