@@ -1,26 +1,42 @@
 interface Teacher {
-    readonly firstName: string,
-    readonly lastName: string,
-    fullTimeEmployee: boolean,
-    yearsOfExperience?: number,
-    location: string,
-    [attrName: string]: any
-}
-
-const myObj: Teacher = {
-    firstName : 'theFirstName',
-    lastName : 'theLastName',
-    fullTimeEmployee : true,
-    location : 'Morocco',
-    contract : 10
+    readonly firstName: string;
+    readonly lastName: string;
+    fullTimeEmployee: boolean;
+    yearsOfExperience?: number;
+    location: string;
+    [attrName: string]: any;
 }
 
 interface Directors extends Teacher {
-    numberOfReports: number
+    numberOfReports: number;
 }
 
-function printTeacher(firstName: string, lastName: string) : void {
-    console.log(`${firstName.substring(0, 1)}. ${lastName}`);
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
 }
 
-printTeacher('My test', 'Last');
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+    return (`${firstName.substring(0, 1)}. ${lastName}`);
+}
+
+interface IStudentClass {
+    workOnHomework() : string;
+    displayName(): string;
+}
+
+interface IStudentClassConstructor {
+    new (firstName: string, lastName: string): IStudentClass;
+}
+
+class StudentClass implements IStudentClass {
+    firstName: string;
+    lastName: string;
+
+    constructor (firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework = () : string => 'Currently working';
+    displayName = () : string => this.firstName;
+}
